@@ -15,3 +15,6 @@ Style/Documentation:
 
 Style/SymbolArray:
   Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
