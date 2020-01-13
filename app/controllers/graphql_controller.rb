@@ -14,10 +14,16 @@ class GraphqlController < ApplicationController
       # Query context goes here, for example:
       # current_user: current_user,
     }
-    result = RailsGraphqlTutorialSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = RailsGraphqlTutorialSchema.execute(
+      query,
+      variables: variables,
+      context: context,
+      operation_name: operation_name,
+    )
     render json: result
   rescue => e
     raise e unless Rails.env.development?
+
     handle_error_in_development e
   end
 
@@ -27,11 +33,7 @@ class GraphqlController < ApplicationController
   def ensure_hash(ambiguous_param)
     case ambiguous_param
     when String
-      if ambiguous_param.present?
-        ensure_hash(JSON.parse(ambiguous_param))
-      else
-        {}
-      end
+      string_to_hash(ambiguous_param)
     when Hash, ActionController::Parameters
       ambiguous_param
     when nil
@@ -41,10 +43,26 @@ class GraphqlController < ApplicationController
     end
   end
 
-  def handle_error_in_development(e)
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+  def string_to_hash(string)
+    return {} if string.blank?
 
-    render json: { error: { message: e.message, backtrace: e.backtrace }, data: {} }, status: 500
+    ensure_hash(JSON.parse(string))
+  end
+
+  def handle_error_in_development(err)
+    logger.error err.message
+    logger.error err.backtrace.join("\n")
+
+    render json: error_to_hash(err), status: 500
+  end
+
+  def error_to_hash(err)
+    {
+      error: {
+        message: err.message,
+        backtrace: err.backtrace
+      },
+      data: {}
+    }
   end
 end
