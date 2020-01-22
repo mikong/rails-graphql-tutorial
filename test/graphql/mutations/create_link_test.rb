@@ -3,16 +3,23 @@
 require 'test_helper'
 
 class Mutations::CreateLinkTest < ActiveSupport::TestCase
-  def perform(**args)
+  def perform(user: nil, **args)
     Mutations::CreateLink
-      .new(object: nil, field: nil, context: {})
+      .new(object: nil, field: nil, context: { current_user: user })
       .resolve(args)
   end
 
   test 'create a new link' do
+    user = User.create!(
+      name: 'Test User',
+      email: 'email@example.com',
+      password: '[omitted]',
+    )
+
     link = perform(
       url: 'http://example.com',
       description: 'Typical example URL',
+      user: user,
     )
 
     assert link.persisted?
