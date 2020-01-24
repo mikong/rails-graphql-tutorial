@@ -38,7 +38,7 @@ module RailsGraphqlTutorial
     config.api_only = true
 
     config.middleware.insert_after(
-      ActiveRecord::Migration::CheckPending,
+      ActionDispatch::Callbacks,
       ActionDispatch::Cookies,
     )
     config.middleware.insert_after(
