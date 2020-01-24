@@ -50,5 +50,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Custom
-  config.allowed_cors_origins = ['*']
+  config.allowed_cors_origins = [/localhost(:\d+)?\z/]
 end
