@@ -10,11 +10,7 @@ class Mutations::CreateLinkTest < ActiveSupport::TestCase
   end
 
   test 'create a new link' do
-    user = User.create!(
-      name: 'Test User',
-      email: 'email@example.com',
-      password: '[omitted]',
-    )
+    user = create(:user)
 
     link = perform(
       url: 'http://example.com',
