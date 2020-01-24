@@ -6,4 +6,9 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { 'password123' }
   end
+
+  factory :link do
+    url { Faker::Internet.url }
+    description { Faker::Lorem.sentence }
+  end
 end
