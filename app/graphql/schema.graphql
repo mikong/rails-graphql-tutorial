@@ -12,6 +12,7 @@ type Link {
   id: ID!
   postedBy: User!
   url: String!
+  votes: [Vote!]!
 }
 
 type Mutation {
