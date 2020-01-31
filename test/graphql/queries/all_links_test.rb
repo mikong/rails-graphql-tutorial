@@ -15,6 +15,7 @@ class AllLinksTest < ActiveSupport::TestCase
           id
           url
           description
+          createdAt
         }
       }
     GRAPHQL
@@ -27,6 +28,9 @@ class AllLinksTest < ActiveSupport::TestCase
 
     item = links_result.first
     assert_equal item['url'], link.url
+
+    create_date = Date.strptime(item['createdAt'], '%Y-%m-%d')
+    assert create_date.today?
   end
 
   test 'all links has votes' do

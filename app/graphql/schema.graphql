@@ -8,6 +8,7 @@ input AuthProviderSignupData {
 }
 
 type Link {
+  createdAt: String!
   description: String
   id: ID!
   postedBy: User!
