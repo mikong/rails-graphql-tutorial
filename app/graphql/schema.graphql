@@ -16,6 +16,12 @@ type Link {
   votes: [Vote!]!
 }
 
+input LinkFilter {
+  OR: [LinkFilter!]
+  descContains: String
+  urlContains: String
+}
+
 type Mutation {
   createLink(description: String, url: String!): Link
   createUser(authProvider: AuthProviderSignupData, name: String!): User
@@ -24,7 +30,7 @@ type Mutation {
 }
 
 type Query {
-  allLinks: [Link!]!
+  allLinks(filter: LinkFilter): [Link]
 }
 
 """
