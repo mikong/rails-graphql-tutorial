@@ -1,24 +1,66 @@
-# README
+# Rails + GraphQL Tutorial
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Local Setup
 
-Things you may want to cover:
+### Ruby version
 
-* Ruby version
+This application requires [Ruby][ruby] (MRI) 2.6.5.
 
-* System dependencies
+For Ruby gem installation, make sure you have [bundler][bundler] installed.
+Rails 6.0.2 requires Bundler >= 1.3.0.
 
-* Configuration
+```bash
+$ gem install bundler
+```
 
-* Database creation
+### Database
 
-* Database initialization
+PostgreSQL 9.2 and later are supported.
 
-* How to run the test suite
+### Other requirements
 
-* Services (job queues, cache servers, search engines, etc.)
+* [Git][git]
 
-* Deployment instructions
+### Getting Started
 
-* ...
+Checkout the project with git:
+
+```bash
+$ git clone git@github.com:mikong/rails-graphql-tutorial.git
+```
+
+Install gems:
+
+```bash
+$ cd /path/to/project/rails-graphql-tutorial
+$ bundle install
+```
+
+Make sure your PostgreSQL server is running. Update `config/database.yml` with
+your credentials. Then, create the database, load the schema and the seed data:
+
+```bash
+# create the database
+$ rails db:create
+
+# load the schema
+$ rails db:schema:load
+```
+
+Alternatively, you can run the following command:
+
+```bash
+$ rails db:setup
+```
+
+Start the GraphQL server on a custom port, e.g. 4000:
+
+```bash
+$ rails s -p 4000
+```
+
+The GraphQL server can now be accessed by the client via http://localhost:4000.
+
+[ruby]: https://www.ruby-lang.org/en/documentation/installation/
+[bundler]: https://bundler.io/
+[git]: https://git-scm.com/
