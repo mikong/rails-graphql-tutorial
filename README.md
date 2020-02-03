@@ -1,5 +1,23 @@
 # Rails + GraphQL Tutorial
 
+This project loosely followed the How to GraphQL hands-on tutorial for how to
+build a GraphQL server with Ruby:
+
+https://www.howtographql.com/graphql-ruby/0-introduction/
+
+Significant differences are described [below](#differences-with-tutorial).
+
+## GraphQL Client
+
+This GraphQL server was used when developing the following GraphQL frontend
+project:
+
+https://github.com/mikong/react-apollo-tutorial
+
+The frontend project uses the [Apollo client][apollo-client].
+
+## Differences with Tutorial
+
 ## Local Setup
 
 ### Ruby version
@@ -64,3 +82,4 @@ The GraphQL server can now be accessed by the client via http://localhost:4000.
 [ruby]: https://www.ruby-lang.org/en/documentation/installation/
 [bundler]: https://bundler.io/
 [git]: https://git-scm.com/
+[apollo-client]: https://www.apollographql.com/docs/react/
