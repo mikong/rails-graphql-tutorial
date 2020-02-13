@@ -18,6 +18,52 @@ The frontend project uses the [Apollo client][apollo-client].
 
 ## Differences with Tutorial
 
+### Versions
+
+The following versions were used:
+
+* rails 6.0.2
+* graphql 1.9
+
+### API-only Rails Application and PostgreSQL
+
+The Rails application was generated using the following command:
+
+```bash
+rails new rails-graphql-tutorial --api -d postgresql --skip-active-storage
+```
+
+### GraphQL
+
+While we use the same generator as in the tutorial to setup GraphQL:
+
+```bash
+rails g graphql:install
+```
+
+the output is a bit different due to the difference in gem version.
+
+Also, the [graphiql-rails][graphiql] gem is normally automatically installed by
+the above generator but this is skipped for API-only applications.
+
+### Middleware
+
+As an API-only Rails application, middleware for handling cookies was added
+back manually:
+
+```ruby
+# in config/application.rb
+
+config.middleware.insert_after(
+  ActionDispatch::Callbacks,
+  ActionDispatch::Cookies,
+)
+config.middleware.insert_after(
+  ActionDispatch::Cookies,
+  ActionDispatch::Session::CookieStore,
+)
+```
+
 ## Local Setup
 
 ### Ruby version
@@ -83,3 +129,4 @@ The GraphQL server can now be accessed by the client via http://localhost:4000.
 [bundler]: https://bundler.io/
 [git]: https://git-scm.com/
 [apollo-client]: https://www.apollographql.com/docs/react/
+[graphiql]: https://github.com/rmosolgo/graphiql-rails
