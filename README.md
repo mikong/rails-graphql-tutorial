@@ -16,6 +16,20 @@ https://github.com/mikong/react-apollo-tutorial
 
 The frontend project uses the [Apollo client][apollo-client].
 
+## GraphQL Schema Structure
+
+For reference, you can view the GraphQL schema structure
+in [schema.graphql][graphql-schema].
+
+When making changes to the schema, we can dump the updated schema to IDL in
+`app/graphql/schema.graphql` with the following command:
+
+```bash
+$ rails graphql:schema:idl
+```
+
+The `SchemaTest` tests if this schema dump is up-to-date.
+
 ## Differences with Tutorial
 
 ### Versions
@@ -30,7 +44,7 @@ The following versions were used:
 The Rails application was generated using the following command:
 
 ```bash
-rails new rails-graphql-tutorial --api -d postgresql --skip-active-storage
+$ rails new rails-graphql-tutorial --api -d postgresql --skip-active-storage
 ```
 
 ### GraphQL
@@ -38,7 +52,7 @@ rails new rails-graphql-tutorial --api -d postgresql --skip-active-storage
 While we use the same generator as in the tutorial to setup GraphQL:
 
 ```bash
-rails g graphql:install
+$ rails g graphql:install
 ```
 
 the output is a bit different due to the difference in gem version.
@@ -129,4 +143,5 @@ The GraphQL server can now be accessed by the client via http://localhost:4000.
 [bundler]: https://bundler.io/
 [git]: https://git-scm.com/
 [apollo-client]: https://www.apollographql.com/docs/react/
+[graphql-schema]: https://github.com/mikong/rails-graphql-tutorial/blob/master/app/graphql/schema.graphql
 [graphiql]: https://github.com/rmosolgo/graphiql-rails
