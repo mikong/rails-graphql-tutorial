@@ -21,9 +21,9 @@ module Resolvers
       filter = {
         filter: {
           desc_contains: 'test1',
-          OR: [{
+          or: [{
             url_contains: 'test2',
-            OR: [{
+            or: [{
               url_contains: 'test3'
             }]
           }, {

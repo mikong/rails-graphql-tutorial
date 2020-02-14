@@ -11,7 +11,7 @@ class Resolvers::LinksSearch
   type types[Types::LinkType]
 
   class LinkFilter < ::Types::BaseInputObject
-    argument :OR, [self], required: false
+    argument :or, [self], required: false
     argument :desc_contains, String, required: false
     argument :url_contains, String, required: false
   end
@@ -26,8 +26,8 @@ class Resolvers::LinksSearch
   def normalize_filters(value, branches = [])
     branches << get_scope_from(value)
 
-    if value[:OR].present?
-      value[:OR].reduce(branches) { |s, v| normalize_filters(v, s) }
+    if value[:or].present?
+      value[:or].reduce(branches) { |s, v| normalize_filters(v, s) }
     end
 
     branches

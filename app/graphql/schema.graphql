@@ -17,8 +17,8 @@ type Link {
 }
 
 input LinkFilter {
-  OR: [LinkFilter!]
   descContains: String
+  or: [LinkFilter!]
   urlContains: String
 }
 
