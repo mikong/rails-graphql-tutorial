@@ -60,6 +60,40 @@ the output is a bit different due to the difference in gem version.
 Also, the [graphiql-rails][graphiql] gem is normally automatically installed by
 the above generator but this is skipped for API-only applications.
 
+### CORS
+
+To allow communication between frontend and backend applications, we need to
+enable cross-origin requests. The gem `rack-cors` was added to the Gemfile. In
+`config/initializers/cors.rb`, we have:
+
+```ruby
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allowed_origins = Rails.configuration.allowed_cors_origins
+  if allowed_origins.present?
+    allow do
+      origins allowed_origins
+
+      resource(
+        '*',
+        headers: :any,
+        methods: [:get, :post, :options],
+        credentials: true,
+      )
+    end
+  end
+end
+```
+
+We also have the following configuration in
+`config/environments/development.rb`:
+
+```ruby
+config.allowed_cors_origins = [/localhost(:\d+)?\z/]
+```
+
+This allows the Rails application to accept requests from the localhost origin
+using any port.
+
 ### Middleware
 
 As an API-only Rails application, middleware for handling cookies was added
