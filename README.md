@@ -1,5 +1,14 @@
 # Rails + GraphQL Tutorial
 
+This project is an API for a [Hacker News][hacker-news] clone using Rails and
+the [GraphQL gem][graphql-gem]. It has the following basic features:
+
+* show a list of links
+* authentication
+* users can create new links
+* users can vote for links
+* search links
+
 This project loosely followed the How to GraphQL hands-on tutorial for how to
 build a GraphQL server with Ruby:
 
@@ -173,6 +182,8 @@ $ rails s -p 4000
 
 The GraphQL server can now be accessed by the client via http://localhost:4000.
 
+[hacker-news]: https://news.ycombinator.com/
+[graphql-gem]: https://graphql-ruby.org/
 [ruby]: https://www.ruby-lang.org/en/documentation/installation/
 [bundler]: https://bundler.io/
 [git]: https://git-scm.com/
