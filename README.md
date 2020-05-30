@@ -45,7 +45,7 @@ The `SchemaTest` tests if this schema dump is up-to-date.
 
 The following versions were used:
 
-* rails 6.0.2
+* rails 6.0.3
 * graphql 1.9
 
 ### API-only Rails Application and PostgreSQL
@@ -128,7 +128,7 @@ config.middleware.insert_after(
 This application requires [Ruby][ruby] (MRI) 2.6.5.
 
 For Ruby gem installation, make sure you have [bundler][bundler] installed.
-Rails 6.0.2 requires Bundler >= 1.3.0.
+Rails 6.0.3 requires Bundler >= 1.3.0.
 
 ```bash
 $ gem install bundler
